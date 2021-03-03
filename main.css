@@ -1,0 +1,36 @@
+
+  .val{
+    fill:red;
+  }
+
+  .main{
+    width: 90%;
+    margin: 30px auto 0px auto;
+    padding: 25px 10px 50px 10px;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 10px -5px;
+  }
+
+  .my-nav-row{
+    width: 70%;
+    margin: auto;
+  }
+
+  #mychart,
+  #myscatterplot{
+    text-align: center;
+  }
+
+ .attr-selection{
+   text-align: center;
+ }
+
+.hidden{
+  display: none;
+}
+
+#bar,
+#hist,
+#scatt{
+  text-align: center;
+}
