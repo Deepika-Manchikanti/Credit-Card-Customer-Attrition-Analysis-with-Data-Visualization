@@ -32,7 +32,7 @@ data.forEach(function(d) {
 // now store the count in each data member
 data.forEach(function(d) {
     d.count = countObj[d[val]];
-    // console.log(d.count);
+    
 });
 
 
