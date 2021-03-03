@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Project #1</title>
+  
+  <link rel="stylesheet" href="./Stylesheets/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="container main">
+
+      <div class="heading">
+        <figure class="text-center">
+          <blockquote class="blockquote">
+            <p class="display-5">Credit Card Customer data visualization</p>
+          </blockquote>
+        </figure>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="p-3"><button type="button" id='bar-chart-select' class='nav-button btn btn-outline-dark' onclick="getBar()">Bar Chart</button></div>
+        <div class="p-3"><button type="button" id='histogram-select' class='nav-button btn btn-outline-dark' onclick="getHist()">Histogram</button></div>
+        <div class="p-3"><button type="button" id='scatter-plot-select' class='nav-button btn btn-outline-dark' onclick="getScatt()">Scattter Plot</button></div>
+      </div>
+
+      <div class="hidden" id="bar">
+        <p>Choose a <strong>Categorical</strong> variable to generate <strong>Bar Chart</strong></p>
+        <div class="drop">
+          <form action="/action_page.php">
+            <label for="categories1">Select a variable:</label>
+            <select name="categories1" id="categories1" onchange="getValue1();">
+              <option value="none" selected disabled hidden> Select an Option </option>
+              <option value="Attrition_Flag">Attrition</option>
+              <option value="Gender">Gender</option>
+              <option value="Education_Level">Education Level</option>
+              <option value="Marital_Status">Marital Status</option>
+              <option value="Income_Category">Income</option>
+              <option value="Card_Category">Card Category</option>
+            </select>
+          </form>
+        </div>
+        <div style="text-align:center; font-weight:bold; margin-top:20px;" id="xaxisLabel"></div>
+        <div class="p-2"><div id="mybarchart"></div></div>
+      </div>
+
+      <div class="hidden" id="hist">
+        <p>Choose a <strong>Numerical</strong> attribute to generate <strong>Histogram</strong></p>
+        <div class="drop">
+          <form action="/action_page.php">
+            <label for="categories2">Select a variable:</label>
+            <select name="categories2" id="categories2" onchange="getValue2();">
+              <option value="none" selected disabled hidden> Select an Option </option>
+              <option value="Customer_Age">Customer Age</option>
+              <option value="Months_on_book">Months on book</option>
+              <option value="Credit_Limit">Credit Limit</option>
+              <option value="Total_Revolving_Bal">Total Revolving Balance</option>
+              <option value="Avg_Open_To_Buy">Avg Open To Buy</option>
+              <option value="Total_Amt_Chng_Q4_Q1">Total Amt Chng - Q4_Q1</option>
+              <option value="Total_Trans_Amt">Total Trans Amt</option>
+              <option value="Total_Trans_Ct">Total Trans Ct</option>
+              <option value="Total_Ct_Chng_Q4_Q1">Total Ct Chng - Q4_Q1</option>
+              <option value="Avg_Utilization_Ratio">Avg Utilization Ratio</option>
+            </select>
+          </form>
+        </div>
+        <div style="text-align:center; font-weight:bold; margin-top:20px" id="xaxisLabel"></div>
+        <div class="p-2"><div id="myhistogram"></div></div>
+      </div>
+
+      <div class="hidden" id="scatt">
+        <p>Choose variables for <strong>X and Y axes</strong> to generate <strong>scatterplot</strong></p>
+          <form action="/action_page.php">
+            <div class="d-flex justify-content-center">
+              <div class="p-3">
+                <input type="radio" id="xaxis" name="axis" value="xaxis">
+                <label for="xaxis">X-axis</label>
+              </div>
+              <div class="p-3">
+                <input type="radio" id="yaxis" name="axis" value="yaxis">
+                <label for="yaxis">Y-axis</label>
+              </div>
+            </div>
+          </form>
+        <div class="drop">
+          <form action="/action_page.php">
+            <label for="categories3">Select a variable:</label>
+            <select name="categories3" id="categories3" onchange="getValue3();">
+              <option value="none" selected disabled hidden> Select an Option </option>
+              <option value="Attrition_Flag">Attrition</option>
+              <option value="Customer_Age">Customer Age</option>
+              <option value="Gender">Gender</option>
+              <option value="Education_Level">Education Level</option>
+              <option value="Marital_Status">Marital Status</option>
+              <option value="Income_Category">Income</option>
+              <option value="Card_Category">Card Category</option>
+              <option value="Months_on_book">Months on book</option>
+              <option value="Credit_Limit">Credit Limit</option>
+              <option value="Total_Revolving_Bal">Total Revolving Balance</option>
+              <option value="Avg_Open_To_Buy">Avg Open To Buy</option>
+              <option value="Total_Amt_Chng_Q4_Q1">Total Amt Chng - Q4_Q1</option>
+              <option value="Total_Trans_Amt">Total Trans Amt</option>
+              <option value="Total_Trans_Ct">Total Trans Ct</option>
+              <option value="Total_Ct_Chng_Q4_Q1">Total Ct Chng - Q4_Q1</option>
+              <option value="Avg_Utilization_Ratio">Avg Utilization Ratio</option>
+            </select>
+          </form>
+        </div>
+        <div class="p-2"><div id="myscatterplot"></div></div>
+      </div>
+
+      
+</body>
+<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+
+<script src="./Scripts/scatterplot.js"></script>
+<script src="./Scripts/histogram.js"></script>
+<script src="./Scripts/barchart.js"></script>
+<script src="./Scripts/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+
+</html>
